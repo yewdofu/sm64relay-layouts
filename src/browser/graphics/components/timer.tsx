@@ -49,6 +49,11 @@ export const Timer = (props: {
 
 	const color = (): string => {
 		if (timer) {
+			// マイナスの時はグレーのまま
+			if (timer.raw < 0) {
+				return "#525252";
+			}
+
 			if (timer.state === "Running") {
 				return "rgb(0, 186, 69)";
 			}

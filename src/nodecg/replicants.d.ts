@@ -34,6 +34,7 @@ type Sound = {
 export interface Timer {
 	raw: number;
 	timeAtPaused: number;
+	initialTime: number;
 	state: "NotRunning" | "Running" | "Paused";
 	formattedTime: string;
 }

@@ -8,4 +8,5 @@ export type MessageMap = {
 	"timer:start": unknown;
 	"timer:stop": unknown;
 	"timer:reset": unknown;
+	"timer:setInitialTime": {minutes: number; seconds: number};
 };

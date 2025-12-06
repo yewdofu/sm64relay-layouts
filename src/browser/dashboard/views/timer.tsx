@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
 import {Pause, PlayArrow, RestartAlt} from "@mui/icons-material";
-import {Button} from "@mui/material";
+import {Button, TextField} from "@mui/material";
+import {useState} from "react";
 import {render} from "../../render";
 import {useReplicant} from "../../use-replicant";
 
 const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr auto;
-	grid-template-rows: 72px 1fr;
+	grid-template-rows: 72px auto 1fr;
 	grid-template-areas:
 		"timer"
+		"initialTime"
 		"ctrls";
 	justify-items: center;
 	align-items: center;
@@ -23,6 +25,14 @@ const Timer = styled.div<{color: string}>`
 	font-weight: 700;
 	border-radius: 16px;
 	color: ${(props) => props.color};
+`;
+
+const InitialTimeContainer = styled.div`
+	grid-area: initialTime;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 16px;
 `;
 
 const ButtonContainer = styled.div`
@@ -73,9 +83,16 @@ const ResetButton = (props: {onClick: () => void; disabled: boolean}) => {
 };
 export const ControlTimer = () => {
 	const timer = useReplicant("timer");
+	const [minutes, setMinutes] = useState(0);
+	const [seconds, setSeconds] = useState(0);
 
 	const color = (): string => {
 		if (timer) {
+			// マイナスの時はグレーのまま
+			if (timer.raw < 0) {
+				return "#525252";
+			}
+
 			if (timer.state === "Running") {
 				return "rgb(0, 186, 69)";
 			}
@@ -89,10 +106,35 @@ export const ControlTimer = () => {
 		return "";
 	};
 
+	const handleSetInitialTime = () => {
+		nodecg.sendMessage("timer:setInitialTime", {minutes, seconds});
+	};
+
 	return (
 		<>
 			<Container>
 				<Timer color={color()}>{timer?.formattedTime}</Timer>
+				<InitialTimeContainer>
+					<TextField
+						label="分"
+						type="number"
+						value={minutes}
+						onChange={(e) => setMinutes(Number(e.target.value))}
+						size="small"
+						style={{width: "100px"}}
+					/>
+					<TextField
+						label="秒"
+						type="number"
+						value={seconds}
+						onChange={(e) => setSeconds(Number(e.target.value))}
+						size="small"
+						style={{width: "100px"}}
+					/>
+					<Button variant="contained" onClick={handleSetInitialTime}>
+						初期時間設定
+					</Button>
+				</InitialTimeContainer>
 				<ButtonContainer>
 					<PlayButton
 						onClick={() => nodecg.sendMessage("timer:start")}
