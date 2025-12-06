@@ -115,8 +115,8 @@ const Layout = () => {
 				/>
 			)}
 			<Timer
-				fontSize={84}
-				x={1512}
+				fontSize={74}
+				x={1510}
 				y={150}
 			/>
 		</Container>

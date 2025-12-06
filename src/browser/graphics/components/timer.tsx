@@ -32,7 +32,7 @@ const TimerContainer = styled.div<{
 	left: ${(props) => props.x}px;
 	top: ${(props) => props.y}px;
 	width: ${(props) => props.width ?? 350}px;
-	text-align: right;
+	text-align: center;
 	transition:
 		text-shadow 0.3s ease,
 		color 0.3s ease;
@@ -55,7 +55,7 @@ export const Timer = (props: {
 			}
 
 			if (timer.state === "Running") {
-				return "rgb(0, 186, 69)";
+				return "rgb(0, 160, 69)";
 			}
 
 			if (timer.state === "Paused") {
