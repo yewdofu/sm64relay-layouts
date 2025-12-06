@@ -1,5 +1,5 @@
 {
-	"name": "nodecg-react-template",
+	"name": "sm64relay-layouts",
 	"version": "1.0.0",
 	"scripts": {
 		"dev": "run-p dev:*",
@@ -26,11 +26,27 @@
 		],
 		"dashboardPanels": [
 			{
-				"name": "example",
-				"title": "Example",
-				"width": 2,
-				"file": "example.html",
-				"workspace": "Example",
+				"name": "runner",
+				"title": "走者管理",
+				"width": 3,
+				"file": "runner.html",
+				"workspace": "各種情報",
+				"headerColor": "#525F78"
+			},
+			{
+				"name": "sound",
+				"title": "音マーク",
+				"width": 3,
+				"file": "sound.html",
+				"workspace": "各種情報",
+				"headerColor": "#525F78"
+			},
+			{
+				"name": "timer",
+				"title": "タイマー",
+				"width": 3,
+				"file": "timer.html",
+				"workspace": "各種情報",
 				"headerColor": "#525F78"
 			}
 		],
@@ -61,7 +77,11 @@
 	"dependencies": {
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
+		"@fontsource-variable/m-plus-1": "^5.2.9",
+		"@fontsource/fira-code": "^5.2.7",
+		"@fontsource/m-plus-1p": "^5.2.8",
 		"@mdi/react": "^1.6.1",
+		"@mui/icons-material": "^7.3.6",
 		"@mui/material": "^7.3.1",
 		"@nodecg/react-hooks": "^1.0.3",
 		"nodecg": "^2.6.1",

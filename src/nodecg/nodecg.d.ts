@@ -5,21 +5,21 @@ import {MessageMap} from "./messages";
 import {ReplicantMap} from "./replicants";
 
 export type ServerNodecgInstance = Server.CreateNodecgInstance<
-	"nodecg-react-template",
+	"sm64relay-layouts",
 	BundleConfig,
 	ReplicantMap,
 	MessageMap
 >;
 
 export type BrowserNodecgInstance = Browser.CreateNodecgInstance<
-	"nodecg-react-template",
+	"sm64relay-layouts",
 	BundleConfig,
 	ReplicantMap,
 	MessageMap
 >;
 
 export type BrowserNodecgConstructor = Browser.CreateNodecgConstructor<
-	"nodecg-react-template",
+	"sm64relay-layouts",
 	BundleConfig,
 	ReplicantMap,
 	MessageMap

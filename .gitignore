@@ -10,5 +10,7 @@ types/schemas
 /db
 /logs
 
+*.csv
+
 # tsbuildinfo
 *.tsbuildinfo
