@@ -1,3 +1,5 @@
+import {useReplicant} from "@nodecg/react-hooks";
+import type {Teams} from "../../../types/generated/teams";
 import {render} from "../../render";
 import {
 	useObsAudioInputs,
@@ -34,6 +36,31 @@ const SoundIcons = () => {
 	});
 };
 
+const RunnerNames = () => {
+	const [teams] = useReplicant<Teams>("teams");
+
+	return teams?.map((team, index) => {
+		const runner = team.runners[team.currentIndex];
+		if (runner === undefined) return null;
+		return (
+			<div
+				key={index}
+				style={{
+					position: "absolute",
+					left: team.x,
+					top: team.y,
+					color: "#000",
+					fontSize: 52,
+					fontWeight: "bold",
+					whiteSpace: "nowrap",
+				}}
+			>
+				{runner}
+			</div>
+		);
+	});
+};
+
 export const Graphics = () => {
 	return (
 		<div
@@ -46,6 +73,7 @@ export const Graphics = () => {
 				overflow: "hidden",
 			}}
 		>
+			<RunnerNames />
 			<SoundIcons />
 		</div>
 	);

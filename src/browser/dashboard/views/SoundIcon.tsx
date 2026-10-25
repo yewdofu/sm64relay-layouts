@@ -7,6 +7,7 @@ import {
 	useSoundIconTargets,
 	useSoundIconUrl,
 } from "../../sound-icon";
+import {NumberInput} from "../components/NumberInput";
 
 const styles = {
 	root: {
@@ -42,36 +43,7 @@ const styles = {
 		textOverflow: "ellipsis",
 		whiteSpace: "nowrap",
 	},
-	number: {
-		width: 64,
-	},
 } satisfies Record<string, CSSProperties>;
-
-const NumberInput = ({
-	label,
-	value,
-	disabled,
-	onChange,
-}: {
-	label: string;
-	value: number;
-	disabled?: boolean;
-	onChange: (value: number) => void;
-}) => (
-	<label>
-		{label}{" "}
-		<input
-			type='number'
-			value={value}
-			disabled={disabled}
-			style={styles.number}
-			onChange={(e) => {
-				const newValue = e.currentTarget.valueAsNumber;
-				if (Number.isFinite(newValue)) onChange(newValue);
-			}}
-		/>
-	</label>
-);
 
 export const SoundIcon = () => {
 	const audioInputs = useObsAudioInputs();

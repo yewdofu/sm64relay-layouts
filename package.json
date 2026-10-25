@@ -27,11 +27,27 @@
 		],
 		"dashboardPanels": [
 			{
+				"name": "runner",
+				"title": "走者切り替え",
+				"width": 3,
+				"file": "Runner.html",
+				"workspace": "各種情報",
+				"headerColor": "#525F78"
+			},
+			{
+				"name": "runner-setup",
+				"title": "走者登録",
+				"width": 3,
+				"file": "RunnerSetup.html",
+				"workspace": "設定",
+				"headerColor": "#525F78"
+			},
+			{
 				"name": "sound-icon",
 				"title": "音マーク",
 				"width": 3,
 				"file": "SoundIcon.html",
-				"workspace": "各種情報",
+				"workspace": "設定",
 				"headerColor": "#525F78"
 			}
 		],

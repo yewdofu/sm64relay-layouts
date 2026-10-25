@@ -1,0 +1,61 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "array",
+	"items": {
+		"type": "object",
+		"additionalProperties": false,
+		"properties": {
+			"runners": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			},
+			"currentIndex": {
+				"type": "integer",
+				"minimum": 0
+			},
+			"x": {
+				"type": "number"
+			},
+			"y": {
+				"type": "number"
+			}
+		},
+		"required": ["runners", "currentIndex", "x", "y"]
+	},
+	"minItems": 5,
+	"maxItems": 5,
+	"default": [
+		{
+			"runners": [],
+			"currentIndex": 0,
+			"x": 0,
+			"y": 0
+		},
+		{
+			"runners": [],
+			"currentIndex": 0,
+			"x": 0,
+			"y": 0
+		},
+		{
+			"runners": [],
+			"currentIndex": 0,
+			"x": 0,
+			"y": 0
+		},
+		{
+			"runners": [],
+			"currentIndex": 0,
+			"x": 0,
+			"y": 0
+		},
+		{
+			"runners": [],
+			"currentIndex": 0,
+			"x": 0,
+			"y": 0
+		}
+	]
+}
