@@ -6,6 +6,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Example {
-	count: number;
-}
+export type SoundIconSize = number;

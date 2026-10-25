@@ -3,6 +3,7 @@ import {render} from "../../render";
 import {
 	type SoundIconTarget,
 	useObsAudioInputs,
+	useSoundIconSize,
 	useSoundIconTargets,
 	useSoundIconUrl,
 } from "../../sound-icon";
@@ -14,10 +15,15 @@ const styles = {
 		fontFamily: "sans-serif",
 		fontSize: 14,
 	},
+	header: {
+		display: "flex",
+		alignItems: "center",
+		gap: 8,
+		marginBottom: 8,
+	},
 	preview: {
 		maxWidth: 64,
 		maxHeight: 64,
-		marginBottom: 8,
 	},
 	notice: {
 		opacity: 0.6,
@@ -36,12 +42,12 @@ const styles = {
 		textOverflow: "ellipsis",
 		whiteSpace: "nowrap",
 	},
-	coordinate: {
+	number: {
 		width: 64,
 	},
 } satisfies Record<string, CSSProperties>;
 
-const CoordinateInput = ({
+const NumberInput = ({
 	label,
 	value,
 	disabled,
@@ -49,7 +55,7 @@ const CoordinateInput = ({
 }: {
 	label: string;
 	value: number;
-	disabled: boolean;
+	disabled?: boolean;
 	onChange: (value: number) => void;
 }) => (
 	<label>
@@ -58,7 +64,7 @@ const CoordinateInput = ({
 			type='number'
 			value={value}
 			disabled={disabled}
-			style={styles.coordinate}
+			style={styles.number}
 			onChange={(e) => {
 				const newValue = e.currentTarget.valueAsNumber;
 				if (Number.isFinite(newValue)) onChange(newValue);
@@ -70,6 +76,7 @@ const CoordinateInput = ({
 export const SoundIcon = () => {
 	const audioInputs = useObsAudioInputs();
 	const [targets, setTargets] = useSoundIconTargets();
+	const [size, setSize] = useSoundIconSize();
 	const iconUrl = useSoundIconUrl();
 
 	const findTarget = (inputName: string) =>
@@ -89,17 +96,26 @@ export const SoundIcon = () => {
 
 	return (
 		<div style={styles.root}>
-			{iconUrl ? (
-				<img
-					src={iconUrl}
-					alt='音マーク'
-					style={styles.preview}
+			<div style={styles.header}>
+				{iconUrl ? (
+					<img
+						src={iconUrl}
+						alt='音マーク'
+						style={styles.preview}
+					/>
+				) : (
+					<span style={styles.notice}>
+						Assets の「音マーク画像」に画像をアップロードしてください
+					</span>
+				)}
+				<NumberInput
+					label='サイズ'
+					value={size ?? 0}
+					onChange={(newSize) => {
+						if (newSize >= 1) setSize(newSize);
+					}}
 				/>
-			) : (
-				<div style={styles.notice}>
-					Assets の「音マーク画像」に画像をアップロードしてください
-				</div>
-			)}
+			</div>
 			{audioInputs?.length ? (
 				audioInputs.map((input) => {
 					const target = findTarget(input.inputName);
@@ -121,13 +137,13 @@ export const SoundIcon = () => {
 							>
 								{input.inputName}
 							</span>
-							<CoordinateInput
+							<NumberInput
 								label='X'
 								value={target?.x ?? 0}
 								disabled={!target}
 								onChange={(x) => updateTarget(input.inputName, {x})}
 							/>
-							<CoordinateInput
+							<NumberInput
 								label='Y'
 								value={target?.y ?? 0}
 								disabled={!target}

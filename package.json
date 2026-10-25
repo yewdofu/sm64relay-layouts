@@ -27,14 +27,6 @@
 		],
 		"dashboardPanels": [
 			{
-				"name": "Example",
-				"title": "Example Dashboard",
-				"width": 2,
-				"file": "Example.html",
-				"workspace": "Example",
-				"headerColor": "#525F78"
-			},
-			{
 				"name": "sound-icon",
 				"title": "音マーク",
 				"width": 3,
@@ -44,12 +36,6 @@
 			}
 		],
 		"graphics": [
-			{
-				"file": "Example.html",
-				"width": 1920,
-				"height": 1080,
-				"singleInstance": true
-			},
 			{
 				"file": "Graphics.html",
 				"width": 1920,

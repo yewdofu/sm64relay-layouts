@@ -1,6 +1,7 @@
 import {render} from "../../render";
 import {
 	useObsAudioInputs,
+	useSoundIconSize,
 	useSoundIconTargets,
 	useSoundIconUrl,
 } from "../../sound-icon";
@@ -8,9 +9,10 @@ import {
 const SoundIcons = () => {
 	const audioInputs = useObsAudioInputs();
 	const [targets] = useSoundIconTargets();
+	const [size] = useSoundIconSize();
 	const iconUrl = useSoundIconUrl();
 
-	if (!iconUrl) return null;
+	if (!iconUrl || size === undefined) return null;
 
 	// OBS 未接続時は audioInputs が空になるので、マークも全て非表示になる
 	return targets?.map((target) => {
@@ -21,7 +23,12 @@ const SoundIcons = () => {
 				key={target.inputName}
 				src={iconUrl}
 				alt=''
-				style={{position: "absolute", left: target.x, top: target.y}}
+				style={{
+					position: "absolute",
+					left: target.x,
+					top: target.y,
+					width: size,
+				}}
 			/>
 		);
 	});
