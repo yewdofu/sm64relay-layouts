@@ -1,10 +1,29 @@
-# マリオ64 120枚RTA リレーレイアウト
-第18回☆120枚RTAリレー用NodeCG Bundle
+# nodecg-bundle-template
+NodeCG bundle template for general purpose.
+Dashboard and Graphics should be implemented with React.
+
+## Requirements
+- pnpm 12.4.0
+- nvm (Use Node.js 24)
 
 ## Usage
-Building with following steps.  
-`npm install`  
-`npm run generate-schema-types`  
-`npm run build`  
-then,  
-`npx nodecg start`  
+Clone this repository then install packages.
+```bash
+pnpm install
+```
+
+### Build
+```bash
+pnpm build
+```
+
+### Start NodeCG
+```bash
+pnpm start
+```
+
+### Development server
+Development server is compatible with "Hot Module Replacement" (HMR).
+```bash
+pnpm dev
+```

@@ -1,9 +1,11 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../../tsconfig",
 	"compilerOptions": {
+		"module": "ES2022",
+		"lib": ["ES2022", "DOM"],
 		"jsx": "react-jsx",
 		"noEmit": true,
-		"types": ["vite/client"]
+		"types": ["vite/client", "nodecg/types/augment-window"]
 	},
-	"include": ["./**/*.ts", "./**/*.tsx"]
+	"include": ["./**/*.ts", "./**/*.tsx", "../types/**/*.d.ts"]
 }

@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react";
-import rollupEsbuild from "rollup-plugin-esbuild";
-import rollupExternals from "rollup-plugin-node-externals";
+import esbuild from "rollup-plugin-esbuild";
+import nodeExternals from "rollup-plugin-node-externals";
 import {defineConfig} from "vite";
 import nodecg from "./vite-plugin-nodecg.mjs";
 
@@ -14,7 +14,7 @@ export default defineConfig(() => {
 				dashboard: "./src/browser/dashboard/views/**/*.tsx",
 				extension: {
 					input: "./src/extension/index.ts",
-					plugins: [rollupEsbuild(), rollupExternals()],
+					plugins: [nodeExternals(), esbuild()],
 				},
 			}),
 		],

@@ -6,10 +6,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Timer {
-	raw: number;
-	timeAtPaused: number;
-	initialTime: number;
-	state: 'NotRunning' | 'Running' | 'Paused';
-	formattedTime: string;
+export interface Configschema {
+	[k: string]: unknown;
 }

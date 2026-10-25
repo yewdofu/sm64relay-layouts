@@ -1,21 +1,13 @@
-import {ServerNodecgInstance} from "../nodecg/nodecg";
+import type NodeCG from "@nodecg/types";
+import type {Configschema} from "../types/generated/configschema";
+import type {Example} from "../types/generated/example";
 
-export const example = (nodecg: ServerNodecgInstance) => {
-	const exampleReplicant = nodecg.Replicant("example");
+export const example = (nodecg: NodeCG.ServerAPI<Configschema>) => {
+	const exampleRep = nodecg.Replicant<Example>("example");
 
 	setInterval(() => {
-		if (exampleReplicant.value) {
-			exampleReplicant.value.age++;
-		}
-	}, 5000);
-
-	nodecg.listenFor("resetAge", () => {
-		if (!exampleReplicant.value) return;
-		exampleReplicant.value.age = 0;
-		nodecg.log.info("age has been reset!");
-	});
-
-	exampleReplicant.on("change", (newVal) => {
-		nodecg.log.info(newVal);
-	});
+		if (!exampleRep.value) return;
+		exampleRep.value.count++;
+		nodecg.log.info(`Count: ${exampleRep.value.count}`);
+	}, 1000);
 };

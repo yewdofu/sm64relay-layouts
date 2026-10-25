@@ -1,12 +1,6 @@
-import {ServerNodecgInstance} from "../nodecg/nodecg";
-// import {example} from "./example";
-import {runner} from "./runner";
-import {sound} from "./sound";
-import timer from "./timer";
+import type NodeCG from "@nodecg/types";
+import {example} from "./example";
 
-export default (nodecg: ServerNodecgInstance) => {
-	// example(nodecg);
-	runner(nodecg);
-	sound(nodecg);
-	timer(nodecg);
-};
+export default function (nodecg: NodeCG.ServerAPI) {
+	example(nodecg);
+}

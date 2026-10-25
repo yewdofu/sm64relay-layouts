@@ -7,6 +7,5 @@
  */
 
 export interface Example {
-	text: string;
-	age: number;
+	count: number;
 }

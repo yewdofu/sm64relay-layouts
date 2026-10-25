@@ -18,14 +18,14 @@ import fs from "fs/promises";
 import {globbySync} from "globby";
 import path from "path";
 import {
-	rollup,
-	watch as rollupWatch,
 	type InputOptions,
 	type OutputOptions,
 	type RollupOptions,
-	type RollupWatchOptions,
 	type RollupWatcher,
 	type RollupWatcherEvent,
+	type RollupWatchOptions,
+	rollup,
+	watch as rollupWatch,
 } from "rollup";
 import {Manifest, ManifestChunk, Plugin, ResolvedConfig} from "vite";
 
