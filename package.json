@@ -4,7 +4,8 @@
 	"packageManager": "pnpm@12.4.0",
 	"scripts": {
 		"start": "nodecg start",
-		"build": "vite build",
+		"build": "pnpm build:bundles && vite build",
+		"build:bundles": "pnpm -r --filter \"./bundles/*\" build",
 		"dev": "run-p dev:*",
 		"dev:tsc": "tsc -b src/browser src/extension -w --preserveWatchOutput",
 		"dev:vite": "vite",
@@ -19,9 +20,9 @@
 		"compatibleRange": "^2.5.0",
 		"assetCategories": [
 			{
-				"name": "test",
-				"title": "Test",
-				"allowedTypes": ["jpg", "jpeg", "gif", "png"]
+				"name": "soundIcon",
+				"title": "音マーク画像",
+				"allowedTypes": ["png", "jpg", "jpeg", "gif", "svg", "webp"]
 			}
 		],
 		"dashboardPanels": [
@@ -32,6 +33,14 @@
 				"file": "Example.html",
 				"workspace": "Example",
 				"headerColor": "#525F78"
+			},
+			{
+				"name": "sound-icon",
+				"title": "音マーク",
+				"width": 3,
+				"file": "SoundIcon.html",
+				"workspace": "各種情報",
+				"headerColor": "#525F78"
 			}
 		],
 		"graphics": [
@@ -40,6 +49,12 @@
 				"width": 1920,
 				"height": 1080,
 				"singleInstance": true
+			},
+			{
+				"file": "Graphics.html",
+				"width": 1920,
+				"height": 1080,
+				"singleInstance": false
 			}
 		]
 	},

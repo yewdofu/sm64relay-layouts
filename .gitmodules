@@ -1,0 +1,3 @@
+[submodule "bundles/nodecg-obs-websocket"]
+	path = bundles/nodecg-obs-websocket
+	url = https://github.com/yewdofu/nodecg-obs-websocket
